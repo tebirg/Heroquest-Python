@@ -64,8 +64,23 @@ class Menu():
             
         elif nro_menu==2: # CARGAR NUEVA PARTIDA #
             os.system("clear")
+            while not correcto:
+                try:
+                    os.system("clear")
+                    print (Fore.WHITE+"Manual de usuario Heroquest")
+                    print ("\n")
+                    self.selection = int(input("#>>"))
+                   
+                    if not (1 <= self.selection <= 3 or self.selection == 99):
+                       raise ValueError("")
+                    else:
+                       correcto=True
+                except ValueError:
+                    print ("\n Opción no válida\n")   
+                    
             
-        elif nro_menu==3: # SELECCION DE RETO #
+        elif nro_menu==3: # NUEVA PARTIDA #
+            
             os.system("clear")
             print ("\n")
             print (" Elige uno de los retos  ")
