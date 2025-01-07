@@ -3,6 +3,7 @@
 from colorama import init, Fore, Back
 import sys, tty, termios
 import os
+import json
 
 class Menu():
 
@@ -62,21 +63,38 @@ class Menu():
                 except ValueError:
                     print ("\n Opción no válida\n")                     
             
-        elif nro_menu==2: # CARGAR NUEVA PARTIDA #
+        elif nro_menu==2: # CARGAR PARTIDA #
             os.system("clear")
-            while not correcto:
-                try:
-                    os.system("clear")
-                    print (Fore.WHITE+"Manual de usuario Heroquest")
-                    print ("\n")
-                    self.selection = int(input("#>>"))
-                   
-                    if not (1 <= self.selection <= 3 or self.selection == 99):
-                       raise ValueError("")
-                    else:
-                       correcto=True
-                except ValueError:
-                    print ("\n Opción no válida\n")   
+
+            print("\nElige uno de los retos:")
+            print("_________________________")
+    
+            retos_dir = 'retos'  # Directorio que contiene las carpetas de retos
+            retos = [d for d in os.listdir(retos_dir) if os.path.isdir(os.path.join(retos_dir, d))]
+    
+            # Mostrar los retos disponibles con su título desde el archivo JSON
+            for idx, reto in enumerate(retos, 1):
+                datos_file = os.path.join(retos_dir, reto, f"{reto}c.json")
+            try:
+                with open(datos_file, 'r') as f:
+                    datos = json.load(f)
+                    titulo = datos.get('titulo', 'Título no disponible')
+            except (FileNotFoundError, json.JSONDecodeError):
+                titulo = 'Título no disponible'
+        
+            print(f"  {idx} . {titulo}")
+    
+            try:
+                nro_reto = int(input("\nSelecciona el número del reto: "))
+                reto_seleccionado = retos[nro_reto - 1]
+            except (ValueError, IndexError):
+                print("Opción no válida.")
+            return
+    
+            # Cargar los archivos del reto seleccionado
+            mapa_file = os.path.join(retos_dir, reto_seleccionado, f"{reto_seleccionado}a.txt")
+            historia_file = os.path.join(retos_dir, reto_seleccionado, f"{reto_seleccionado}b.txt")
+            datos_file = os.path.join(retos_dir, reto_seleccionado, f"{reto_seleccionado}c.json")
                     
             
         elif nro_menu==3: # NUEVA PARTIDA #
@@ -87,6 +105,3 @@ class Menu():
             print ("_________________________")
             print ("  1 . La furia de Ragnar ")
             print ("\n")
-            
-        elif nro_menu==4:
-            os.system("clear")
