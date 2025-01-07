@@ -69,7 +69,7 @@ class Menu():
             print("\nElige uno de los retos:")
             print("_________________________")
     
-            retos_dir = 'retos'  # Directorio que contiene las carpetas de retos
+            retos_dir = 'saved'  # Directorio que contiene las carpetas de retos
             retos = [d for d in os.listdir(retos_dir) if os.path.isdir(os.path.join(retos_dir, d))]
     
             # Mostrar los retos disponibles con su título desde el archivo JSON
@@ -100,8 +100,33 @@ class Menu():
         elif nro_menu==3: # NUEVA PARTIDA #
             
             os.system("clear")
-            print ("\n")
-            print (" Elige uno de los retos  ")
-            print ("_________________________")
-            print ("  1 . La furia de Ragnar ")
-            print ("\n")
+
+            print("\nElige uno de los retos:")
+            print("_________________________")
+    
+            retos_dir = 'retos'  # Directorio que contiene las carpetas de retos
+            retos = [d for d in os.listdir(retos_dir) if os.path.isdir(os.path.join(retos_dir, d))]
+    
+            # Mostrar los retos disponibles con su título desde el archivo JSON
+            for idx, reto in enumerate(retos, 1):
+                datos_file = os.path.join(retos_dir, reto, f"{reto}c.json")
+            try:
+                with open(datos_file, 'r') as f:
+                    datos = json.load(f)
+                    titulo = datos.get('titulo', 'Título no disponible')
+            except (FileNotFoundError, json.JSONDecodeError):
+                titulo = 'Título no disponible'
+        
+            print(f"  {idx} . {titulo}")
+    
+            try:
+                nro_reto = int(input("\nSelecciona el número del reto: "))
+                reto_seleccionado = retos[nro_reto - 1]
+            except (ValueError, IndexError):
+                print("Opción no válida.")
+            return
+    
+            # Cargar los archivos del reto seleccionado
+            mapa_file = os.path.join(retos_dir, reto_seleccionado, f"{reto_seleccionado}a.txt")
+            historia_file = os.path.join(retos_dir, reto_seleccionado, f"{reto_seleccionado}b.txt")
+            datos_file = os.path.join(retos_dir, reto_seleccionado, f"{reto_seleccionado}c.json")
