@@ -7,10 +7,11 @@ import json
 
 class Menu():
 
-    def __init__(self):
+    def __init__(self,idioma):
 
         self.nro_menu:  int	= 0
-        self.selection: int = 0
+        self.selection: int     = 0
+        self.idioma             = idioma
 
 
     def show_menu(self, nro_menu: int):

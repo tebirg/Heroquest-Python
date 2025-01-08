@@ -29,7 +29,7 @@ print ("\n")
 
 init()
 
-_menu = Menu()
+_menu = Menu("sp") #Por el momento en castellano#
 _menu.show_menu(0)
 
 if _menu.selection==1:
@@ -39,4 +39,4 @@ elif _menu.selection==2:
 elif _menu.selection==3:
     _menu.show_menu(3)
 elif _menu.selection==99:
-    print (Fore.YELLOW+ "\n# NoS VemoS poR oTRas TierrAs GeRreRO #\n") 
+    print (Fore.YELLOW+ "\n# NoS VemoS poR oTRas TierrAs GeRreRO #\n") #Usar menu cuando sepamos el nro final de menus#
