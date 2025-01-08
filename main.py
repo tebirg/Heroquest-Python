@@ -38,6 +38,5 @@ elif _menu.selection==2:
     _menu.show_menu(2)
 elif _menu.selection==3:
     _menu.show_menu(3)
-    
 elif _menu.selection==99:
     print (Fore.YELLOW+ "\n# NoS VemoS poR oTRas TierrAs GeRreRO #\n") 

@@ -7,8 +7,9 @@ import json
 
 class Reto():
 
+
     def __init__(self, nro_reto, mapa_file, historia_file, datos_file):
-	
+
         self.nro_reto:int = nro_reto # Número de carpeta del reto #
         self.dificultades = {
             "Baja": {"descripcion": "Ideal para principiantes", "puntos": 10},
@@ -16,30 +17,30 @@ class Reto():
             "Alta": {"descripcion": "Desafiante, para jugadores experimentados", "puntos": 30},
             "Experto": {"descripcion": "Solo para los más valientes", "puntos": 50}
         }
-        
-        
+
+
         self.mapa_file = mapa_file
         self.historia_file = historia_file
         self.datos_file = datos_file
-        
+
         try:
             with open(self.datos_file, 'r') as f:
                 datos = json.load(f)
-                
-            self.dificultad = datos.get('dificultad', 'No disponible')    
-            
+
+            self.dificultad = datos.get('dificultad', 'No disponible')
+
         except (FileNotFoundError, json.JSONDecodeError):
             # En caso de error, asignamos la dificultad a un valor predeterminado
             self.dificultad = 'No disponible'
             print(f"Error al cargar el archivo de datos para el reto {self.nro_reto}. Se asigna dificultad predeterminada.")
-            
+
         # Opcionalmente podrías verificar que la dificultad esté en el diccionario de dificultades
         if self.dificultad not in self.dificultades:
             print(f"Dificultad '{self.dificultad}' no reconocida. Se asigna dificultad predeterminada: 'Baja'.")
             self.dificultad = "Baja"  # Asignamos un valor predeterminado en caso de dificultad inválida
-        
 
-        
+
+
     def show_map(self):
         # Mostrar el mapa
         try:
