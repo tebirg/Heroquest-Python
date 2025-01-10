@@ -4,12 +4,13 @@
 from colorama import init, Fore, Back
 from menu import Menu
 from help import Help
-from playsound import playsound
+from system_instance import system_instance
+#from playsound import playsound
 import os
 
-playsound('./sonidos/melodia.mp3',block=False)
+#playsound('./sonidos/melodia.mp3',block=False)
 
-os.system("clear")
+
 print ("\n")
 print ("\n")
 print (Fore.YELLOW+"#>The tErMinAl rOl gaMe") 
@@ -30,22 +31,28 @@ print ("\n")
 
 init()
 
-_menu = Menu("sp")                                                     #Por el momento en castellano#
-_menu.show_menu(0)
+wexit: bool = False
 
-if _menu.selection==1:
+_menu = Menu("sp")                                                     #Por el momento en castellano#
+
+while not wexit:
     
-    _menu.show_menu(1)
-    _help = Help("sp")
+    _menu.show_menu(0)
+    system_instance.command_execute('clear')
+    if _menu.selection==1:
     
-    if _menu.selection==1:                                            #Simbología
-        _help.show_menu(1)
-    elif _menu.selection==2:                                            #Mapa en blanco
-        _help.show_menu(2)
+       _menu.show_menu(1)
+       _help = Help("sp")
+    
+       if _menu.selection==1:                                            #Simbología
+            _help.show_menu(1)
+       elif _menu.selection==2:                                          #Mapa en blanco
+            _help.show_menu(2)
         
-elif _menu.selection==2:
-    _menu.show_menu(2)
-elif _menu.selection==3:
-    _menu.show_menu(3)
-elif _menu.selection==99:
-    print (Fore.YELLOW+ "\n# NoS VemoS poR oTRas TierrAs GeRreRO #\n") #Usar menu cuando sepamos el nro final de menus#
+    elif _menu.selection==2:
+        _menu.show_menu(2)
+    elif _menu.selection==3:
+        _menu.show_menu(3)
+    elif _menu.selection==99:
+        print (Fore.YELLOW+ "\n# NoS VemoS poR oTRas TierrAs GeRreRO #\n") #Usar menu cuando sepamos el nro final de menus#
+        wexit=True

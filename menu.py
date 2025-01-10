@@ -1,7 +1,9 @@
 #importamos clase colorama para poder tener colores por consola
 """Esta clase llevará el control de los menus textuales del juego"""
 from colorama import init, Fore, Back
-import sys, tty, termios
+from system_instance import system_instance
+#import sys, tty, termios
+import sys
 import os
 import json
 
@@ -46,7 +48,7 @@ class Menu():
 
             while not correcto:
                 try:
-                    os.system("clear")
+                    system_instance.command_execute('clear')
                     print (Fore.WHITE+"Manual de usuario Heroquest")
                     print (Fore.WHITE+"---------------------------") 
                     print (Fore.WHITE+" 1 . Simbología en el mapa ")
@@ -63,7 +65,7 @@ class Menu():
                     print ("\n Opción no válida\n")
 
         elif nro_menu==2: # CARGAR PARTIDA #
-            os.system("clear")
+            system_instance.command_execute('clear')
 
             print("\nElige uno de los retos:")
             print("_________________________")
@@ -101,7 +103,7 @@ class Menu():
 
         elif nro_menu==3: # NUEVA PARTIDA #
 
-            os.system("clear")
+            system_instance.command_execute('clear')
 
             print("\nElige uno de los retos:")
             print("_________________________")

@@ -1,5 +1,6 @@
 from colorama import init, Fore, Back
-import sys, tty, termios
+#import sys, tty, termios
+import sys
 import os
 import json
 
