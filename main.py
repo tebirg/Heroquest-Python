@@ -4,11 +4,19 @@
 from colorama import init, Fore, Back
 from menu import Menu
 from help import Help
-from system_instance import system_instance
-#from playsound import playsound
+from system_instance import system_instance # Se crea sobre una clase estática
+import pygame
 import os
 
 #playsound('./sonidos/melodia.mp3',block=False)
+# Cargar el sonido (asegúrate de tener un archivo .wav o .mp3 en el directorio)
+# Inicializar el módulo de audio de pygame
+pygame.mixer.init()
+pygame.mixer.music.load('./sonidos/melodia.mp3')
+# Reproducir el sonido de forma infinita
+pygame.mixer.music.play(loops=-1)  # loops=-1 hace que se repita indefinidamente
+# Reproducir el sonido
+pygame.mixer.music.play()
 
 
 print ("\n")
@@ -22,7 +30,7 @@ print (Fore.RED+"|"+Fore.GREEN+ "  ▄██▄▄▄▄██▄▄ ▄██�
 print (Fore.RED+"|"+Fore.GREEN+ " ▀▀██▀▀▀▀██▀  ▀██▀▀▀    ▀██▀▀▀▀▀ ██   ██ ██   ██  ██   ██ ▀██▀▀    ▀█████    ██    "+Fore.RED+"| ")
 print (Fore.RED+"|"+Fore.GREEN+ "   ██    ██    ██   █▄ ▀████████ ██   ██ ██ █ ██  ██   ██  ██  █▄      ██    ██    "+Fore.RED+"| ")
 print (Fore.RED+"|"+Fore.GREEN+ "   ██    ██    ██   ██   ██   ██ ██   ██ ██  ███  ██   ██  ██  ███ ▄█  ██    ██    "+Fore.RED+"| ")
-print (Fore.RED+"|"+Fore.YELLOW+"   ██    █▀    ███████   ██   ██ ▀████▀  ▀██████ ▄███████▀ ███████▄██████▀ ▄████▀  "+Fore.RED+"| ")
+print (Fore.RED+"|"+Fore.YELLOW+"   ██    █▀    ███████   ██   ██ ▀████▀  ▀██████ ▄████1███▀ ███████▄██████▀ ▄████▀  "+Fore.RED+"| ")
 #print (Fore.YELLOW+"|                                                                                   "+Fore.RED+"| ")
 print (Fore.RED+"-------------------------------------------------------------------------------------    ")
 print (Fore.LIGHTRED_EX+"                              ©Esteban Rodriguez                                    "+Fore.RED+"| ")
