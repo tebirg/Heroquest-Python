@@ -1,6 +1,7 @@
 #importamos clase colorama para poder tener colores por consola
 """Esta clase llevará el control de cada uno de los retos"""
 from colorama import init, Fore, Back
+from system_instance import system_instance # Se crea sobre una clase estática
 import sys, tty, termios
 import os
 import json
@@ -8,16 +9,14 @@ import json
 class Reto():
 
 
-    def __init__(self, nro_reto, mapa_file, historia_file, datos_file):
+    def __init__ (self,mapa_file, historia_file, datos_file):
 
-        self.nro_reto:int = nro_reto # Número de carpeta del reto #
         self.dificultades = {
             "Baja": {"descripcion": "Ideal para principiantes", "puntos": 10},
             "Media": {"descripcion": "Requiere algo de experiencia", "puntos": 20},
             "Alta": {"descripcion": "Desafiante, para jugadores experimentados", "puntos": 30},
             "Experto": {"descripcion": "Solo para los más valientes", "puntos": 50}
         }
-
 
         self.mapa_file = mapa_file
         self.historia_file = historia_file
@@ -42,6 +41,7 @@ class Reto():
 
 
     def show_map(self):
+        system_instance.command_execute("clear")
         # Mostrar el mapa
         try:
             with open(self.mapa_file, 'r') as f:
@@ -50,9 +50,11 @@ class Reto():
             print(mapa)
         except FileNotFoundError:
             print("No se pudo cargar el mapa.")
+        
 
 
     def show_story(self):
+        system_instance.command_execute("clear")
         # Mostrar la historia
         try:
             with open(self.historia_file, 'r') as f:
@@ -61,9 +63,11 @@ class Reto():
             print(historia)
         except FileNotFoundError:
             print("No se pudo cargar la historia.")
+        
 
 
     def show_stats(self):
+        system_instance.command_execute("clear")
         # Mostrar los datos del reto
         try:
             with open(self.datos_file, 'r') as f:
@@ -73,3 +77,4 @@ class Reto():
             print(f"Dificultad: {datos.get('dificultad', 'No disponible')}")
         except (FileNotFoundError, json.JSONDecodeError):
             print("No se pudieron cargar los datos del reto.")
+        

@@ -1,5 +1,9 @@
+from colorama import init, Fore, Back
 import subprocess
 import os
+
+INICIAL="INICIAL"
+FINAL  ="FINAL"
 
 class System:
     _instance = None
@@ -29,3 +33,37 @@ class System:
         """Ejecuta un comando usando el sistema operativo correcto."""
         comando = self.translate(comando)  # Traducir el comando si es necesario
         subprocess.run(comando, shell=True)
+    
+    
+    def dibuja(self,dibujo):
+        """Dibuja los textos por consola para hacer mas bonita la experiencia."""
+        init()
+        
+        if dibujo== INICIAL:
+            print ("\n")
+            print (Fore.YELLOW+"#>The tErMinAl rOl gaMe") 
+            print (Fore.RED+"-------------------------------------------------------------------------------------    ")
+            print (Fore.RED+"|"+Fore.YELLOW+"    █    █▄    ▄█████▄  ████████ ██████▄ ██████▄   ▄   ▄   ▄██████   ████          "+Fore.RED+"| ")
+            print (Fore.RED+"|"+Fore.YELLOW+"   ██    ██    ██   ██   ██   ██ ██   ██ ██   ██  ██   ██  ██  ███  ██ ██ ▀██████▄ "+Fore.RED+"| ")
+            print (Fore.RED+"|"+Fore.YELLOW+"   ██    ██    ██   █▀   ██   ██ ██   ██ ██   ██  ██   ██  ██  █▀   ██ █▀   ▀██▀██ "+Fore.RED+"| ")
+            print (Fore.RED+"|"+Fore.GREEN+ "  ▄██▄▄▄▄██▄▄ ▄██▄▄▄    ▄██▄▄▄█▀ ██   ██ ██   ██  ██   ██  ██▄▄     ██       ██  ▀ "+Fore.RED+"| ")
+            print (Fore.RED+"|"+Fore.GREEN+ " ▀▀██▀▀▀▀██▀  ▀██▀▀▀    ▀██▀▀▀▀▀ ██   ██ ██   ██  ██   ██ ▀██▀▀    ▀█████    ██    "+Fore.RED+"| ")
+            print (Fore.RED+"|"+Fore.GREEN+ "   ██    ██    ██   █▄ ▀████████ ██   ██ ██ █ ██  ██   ██  ██  █▄      ██    ██    "+Fore.RED+"| ")
+            print (Fore.RED+"|"+Fore.GREEN+ "   ██    ██    ██   ██   ██   ██ ██   ██ ██  ███  ██   ██  ██  ███ ▄█  ██    ██    "+Fore.RED+"| ")
+            print (Fore.RED+"|"+Fore.YELLOW+"   ██    █▀    ███████   ██   ██ ▀████▀  ▀██████ ▄████1███▀ ███████▄██████▀ ▄████▀  "+Fore.RED+"| ")
+            print (Fore.RED+"-------------------------------------------------------------------------------------    ")
+            print (Fore.LIGHTRED_EX+"                              ©Esteban Rodriguez                                    "+Fore.RED+"| ")
+            print (Fore.RED+"-------------------------------------------------------------------------------------    ")
+            print ("\n")
+        elif dibujo==FINAL:
+            print (Fore.YELLOW+ "\n#   NoS VemoS poR oTRas TierrAs GeRreRO   #\n") #Usar menu cuando sepamos el nro final de menus#
+            print (Fore.RED+             "         ▓█████  ███▄    █ ▓█████▄ ")
+            print (Fore.RED+             "         ▓█   ▀  ██ ▀█   █ ▒██▀ ██▌")
+            print (Fore.RED+             "         ▒███   ▓██  ▀█ ██▒░██   █▌")
+            print (Fore.RED+             "         ▒▓█  ▄ ▓██▒  ▐▌██▒░▓█▄   ▌")
+            print (Fore.RED+             "         ░▒████▒▒██░   ▓██░░▒████▓ ")
+            print (Fore.LIGHTMAGENTA_EX+ "         ░░ ▒░ ░░ ▒░   ▒ ▒  ▒▒▓  ▒ ")
+            print (Fore.LIGHTMAGENTA_EX+ "         ░ ░  ░░ ░░   ░ ▒░ ░ ▒  ▒  ")
+            print (Fore.LIGHTMAGENTA_EX+ "         ░      ░   ░ ░  ░ ░  ░    ")
+            print (Fore.LIGHTMAGENTA_EX+ "         ░  ░         ░    ░       ")
+            print (Fore.LIGHTMAGENTA_EX+ "                      ░            ")

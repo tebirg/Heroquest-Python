@@ -1,5 +1,5 @@
 # system_instance.py
-from system import System
+from system import System, INICIAL, FINAL
 
 # Crear una instancia global de System (singleton)
 system_instance = System()
